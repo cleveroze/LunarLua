@@ -73,16 +73,16 @@
     <div class="app" id="app">
       <div class="ambient" aria-hidden="true"></div>
 
-      <header class="titlebar" id="titlebar" data-tauri-drag-region>
-        <div class="tb-left" data-tauri-drag-region>
+      <header class="titlebar" id="titlebar">
+        <div class="tb-left">
           <div class="brand-mark"><img src="assets/logo-raw.png" alt="LunarLua" draggable="false" /></div>
-          <div class="brand-text" data-tauri-drag-region>
+          <div class="brand-text">
             <span class="brand-name">Lunar<span>Lua</span></span>
             <span class="brand-sub">Lua toolkit</span>
           </div>
         </div>
 
-        <div class="tb-center" data-tauri-drag-region>
+        <div class="tb-center">
           <span class="engine-chip" id="engineChip">
             <span class="dot"></span><span id="engineChipText">engine ready</span>
           </span>
@@ -358,6 +358,14 @@
       </div>
     </aside>
 
+    <div class="boot" id="boot">
+      <div class="boot-stack">
+        <span class="boot-ring"></span>
+        <div class="boot-mark"><img src="assets/logo-raw.png" alt="" /></div>
+      </div>
+      <div class="boot-name">Lunar<em>Lua</em></div>
+      <div class="boot-note">starting engine</div>
+    </div>
     <div class="toasts" id="toasts"></div>
 
     <script src="app.js"></script>

@@ -348,16 +348,43 @@ function openDrawer(open) {
 }
 
 function initWindow() {
+  let win = null;
   try {
-    const w = TAURI.window.getCurrentWindow();
-    $("#btnMin").onclick = () => w.minimize();
-    $("#btnMax").onclick = () => w.toggleMaximize();
-    $("#btnClose").onclick = () => w.close();
-    $("#titlebar").addEventListener("dblclick", (e) => {
-      if (e.target.closest(".win-btn")) return;
-      w.toggleMaximize();
-    });
-  } catch {}
+    win = TAURI.window.getCurrentWindow();
+  } catch {
+    return;
+  }
+  if (!win) return;
+
+  const action = (fn) => async (event) => {
+    event?.preventDefault?.();
+    try {
+      await fn();
+    } catch (err) {
+      toast("Window action blocked", "err");
+    }
+  };
+
+  $("#btnMin").addEventListener("click", action(() => win.minimize()));
+  $("#btnMax").addEventListener("click", action(() => win.toggleMaximize()));
+  $("#btnClose").addEventListener("click", action(() => win.close()));
+
+  const bar = $("#titlebar");
+  bar.addEventListener("mousedown", (e) => {
+    if (e.button !== 0 || e.target.closest(".win-btn")) return;
+    win.startDragging().catch(() => {});
+  });
+  bar.addEventListener("dblclick", (e) => {
+    if (e.target.closest(".win-btn")) return;
+    win.toggleMaximize().catch(() => {});
+  });
+}
+
+function finishBoot() {
+  const boot = document.getElementById("boot");
+  if (!boot || boot.classList.contains("done")) return;
+  boot.classList.add("done");
+  setTimeout(() => boot.remove(), 700);
 }
 
 async function loadSample() {
@@ -492,6 +519,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } catch {}
   }
+
+  // let the boot screen breathe for a moment, then hand over
+  setTimeout(finishBoot, 620);
 });
 
 /* Fluent reveal highlight */
