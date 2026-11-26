@@ -1,0 +1,8 @@
+node_modules/
+src-tauri/target/
+build/
+dist/
+*.log
+.DS_Store
+Thumbs.db
+web/.lunarlua-webview/

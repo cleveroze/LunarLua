@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LunarLua</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+        </symbol>
+        <symbol id="i-sparkles" viewBox="0 0 24 24">
+          <path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0l1.58 6.13a2 2 0 0 0 1.44 1.44l6.13 1.58a.5.5 0 0 1 0 .96l-6.13 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z" />
+          <path d="M19 3v4M21 5h-4M5 17v2M6 18H4" />
+        </symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24">
+          <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2" />
+        </symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24">
+          <rect x="8" y="2" width="8" height="4" rx="1" />
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+        </symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24">
+          <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3" />
+          <circle cx="4" cy="12" r="2" /><circle cx="12" cy="10" r="2" /><circle cx="20" cy="14" r="2" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24">
+          <rect x="8" y="8" width="14" height="14" rx="2" />
+          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+        </symbol>
+        <symbol id="i-play" viewBox="0 0 24 24">
+          <path d="M6 3.5v17a1 1 0 0 0 1.53.85l13-8.5a1 1 0 0 0 0-1.7l-13-8.5A1 1 0 0 0 6 3.5Z" />
+        </symbol>
+        <symbol id="i-wand" viewBox="0 0 24 24">
+          <path d="m21.6 3.6-1.3-1.3a1.2 1.2 0 0 0-1.7 0L2.4 18.6a1.2 1.2 0 0 0 0 1.7l1.3 1.3a1.2 1.2 0 0 0 1.7 0L21.6 5.4a1.2 1.2 0 0 0 0-1.8Z" />
+          <path d="m14 7 3 3M5 6v4M7 8H3M19 14v4M21 16h-4" />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+        </symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></symbol>
+        <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" /></symbol>
+        <symbol id="i-square" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5" /></symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24">
+          <rect x="4" y="10" width="16" height="11" rx="2.5" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+        </symbol>
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6" /></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24">
+          <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+          <path d="M12 9v4M12 17h.01" />
+        </symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4.1 12.7a1 1 0 0 0 .8 1.6h5.4L11 22l8.9-10.7a1 1 0 0 0-.8-1.6h-5.4z" /></symbol>
+        <symbol id="i-refresh" viewBox="0 0 24 24">
+          <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div class="app" id="app">
+      <div class="ambient" aria-hidden="true"></div>
+
+      <header class="titlebar" id="titlebar" data-tauri-drag-region>
+        <div class="tb-left" data-tauri-drag-region>
+          <div class="brand-mark"><img src="assets/logo-raw.png" alt="LunarLua" draggable="false" /></div>
+          <div class="brand-text" data-tauri-drag-region>
+            <span class="brand-name">Lunar<span>Lua</span></span>
+            <span class="brand-sub">Lua toolkit</span>
+          </div>
+        </div>
+
+        <div class="tb-center" data-tauri-drag-region>
+          <span class="engine-chip" id="engineChip">
+            <span class="dot"></span><span id="engineChipText">engine ready</span>
+          </span>
+        </div>
+
+        <div class="tb-right">
+          <button class="win-btn" id="btnMin" title="Minimize"><svg class="i"><use href="#i-minus" /></svg></button>
+          <button class="win-btn" id="btnMax" title="Maximize"><svg class="i"><use href="#i-square" /></svg></button>
+          <button class="win-btn danger" id="btnClose" title="Close"><svg class="i"><use href="#i-x" /></svg></button>
+        </div>
+      </header>
+
+      <div class="shell">
+        <aside class="sidebar">
+          <div class="nav-label">Workspace</div>
+          <nav class="nav" id="nav">
+            <div class="nav-glider" id="navGlider"></div>
+            <button class="nav-item is-active" data-tab="deob">
+              <span class="nav-ico"><svg class="i"><use href="#i-sparkles" /></svg></span>
+              <span class="nav-text"><b>Deobfuscate</b><small>Restore Lua code</small></span>
+            </button>
+            <button class="nav-item" data-tab="obf">
+              <span class="nav-ico"><svg class="i"><use href="#i-shield" /></svg></span>
+              <span class="nav-text"><b>Obfuscate</b><small>Protect Lua code</small></span>
+            </button>
+          </nav>
+
+          <div class="side-card">
+            <div class="side-card-top">
+              <svg class="i"><use href="#i-bolt" /></svg>
+              <span>Local engine</span>
+            </div>
+            <p>Everything runs on your machine. No uploads, no telemetry.</p>
+            <div class="meter"><span id="meterFill"></span></div>
+            <div class="side-card-foot"><span id="meterLabel">idle</span><span id="meterValue">0 ms</span></div>
+          </div>
+
+          <div class="side-foot">
+            <button class="side-link" id="btnSettings">
+              <svg class="i"><use href="#i-settings" /></svg><span>Settings</span>
+              <kbd>⌘,</kbd>
+            </button>
+            <button class="theme-btn" id="themeToggle" title="Toggle theme">
+              <span class="theme-knob"><svg class="i" id="themeIcon"><use href="#i-moon" /></svg></span>
+              <span class="theme-label" id="themeLabel">Dark</span>
+            </button>
+            <div class="side-meta"><span>Lua 5.1</span><span>·</span><span>Luau</span></div>
+          </div>
+        </aside>
+
+        <main class="main">
+          <!-- ============ DEOBFUSCATE ============ -->
+          <section class="view is-active" id="view-deob" data-view="deob">
+            <header class="view-head">
+              <div class="view-title">
+                <h1>Lua Deobfuscator</h1>
+                <p>Decode strings, unwrap layers and rebuild readable source.</p>
+              </div>
+              <div class="head-tools">
+                <div class="seg" id="segDeob" role="tablist">
+                  <button class="seg-item is-active" data-mode="auto">Auto</button>
+                  <button class="seg-item" data-mode="wearedevs">WeAreDevs</button>
+                  <button class="seg-item" data-mode="static">Static</button>
+                </div>
+              </div>
+            </header>
+
+            <div class="toolbar">
+              <button class="tool" id="deobOpen">
+                <svg class="i"><use href="#i-folder" /></svg><span>Open file</span><kbd>Ctrl O</kbd>
+              </button>
+              <button class="tool" id="deobPaste">
+                <svg class="i"><use href="#i-clipboard" /></svg><span>Paste</span>
+              </button>
+              <div class="grow"></div>
+              <button class="tool ghost" id="deobSample" title="Load an obfuscated sample">
+                <svg class="i"><use href="#i-wand" /></svg><span>Sample</span>
+              </button>
+              <button class="tool ghost" id="deobClear" title="Clear both panes">Clear</button>
+            </div>
+
+            <div class="editors">
+              <article class="card">
+                <div class="card-head">
+                  <span class="card-dot in"></span>
+                  <span class="card-title">Input</span>
+                  <span class="card-meta" id="deobInMeta">empty</span>
+                  <div class="grow"></div>
+                  <button class="icon-btn" id="deobCopyIn" title="Copy input"><svg class="i"><use href="#i-copy" /></svg></button>
+                </div>
+                <div class="code">
+                  <div class="gutter" id="deobGutterIn"></div>
+                  <textarea id="deobIn" spellcheck="false" autocomplete="off" placeholder="-- Paste Lua here, or drop a file"></textarea>
+                </div>
+              </article>
+
+              <article class="card output" id="deobOutCard">
+                <div class="card-head">
+                  <span class="card-dot out"></span>
+                  <span class="card-title">Output</span>
+                  <span class="card-meta" id="deobOutMeta">—</span>
+                  <div class="grow"></div>
+                  <button class="icon-btn" id="deobCopyOut" title="Copy output"><svg class="i"><use href="#i-copy" /></svg></button>
+                  <button class="icon-btn" id="deobSaveOut" title="Save as .lua"><svg class="i"><use href="#i-download" /></svg></button>
+                </div>
+                <div class="code out">
+                  <div class="gutter" id="deobGutterOut"></div>
+                  <div class="scroller"><pre class="highlight" id="deobOut"><span class="empty-state">Recovered source will appear here.</span></pre></div>
+                </div>
+                <div class="progress" id="deobProgress"><span></span></div>
+              </article>
+            </div>
+
+            <footer class="actionbar">
+              <div class="status">
+                <span class="status-pulse" id="deobPulse"></span>
+                <span id="deobStatus">Ready</span>
+                <span class="status-sep">·</span>
+                <span class="status-dim" id="deobDetected">Lua / Luau</span>
+              </div>
+              <div class="grow"></div>
+              <button class="primary" id="deobRun">
+                <svg class="i"><use href="#i-play" /></svg><span>Deobfuscate</span>
+              </button>
+            </footer>
+          </section>
+
+          <!-- ============ OBFUSCATE ============ -->
+          <section class="view" id="view-obf" data-view="obf">
+            <header class="view-head">
+              <div class="view-title">
+                <h1>Lua Obfuscator</h1>
+                <p>Rename identifiers, encrypt strings and add noise.</p>
+              </div>
+              <div class="head-tools">
+                <button class="pill-btn" id="obfOptions">
+                  <svg class="i"><use href="#i-settings" /></svg><span>Options</span><svg class="i chev"><use href="#i-chevron" /></svg>
+                </button>
+              </div>
+            </header>
+
+            <div class="toolbar">
+              <button class="tool" id="obfOpen">
+                <svg class="i"><use href="#i-folder" /></svg><span>Open file</span><kbd>Ctrl O</kbd>
+              </button>
+              <button class="tool" id="obfPaste">
+                <svg class="i"><use href="#i-clipboard" /></svg><span>Paste</span>
+              </button>
+              <div class="grow"></div>
+              <div class="toggle-inline">
+                <span>Minify</span>
+                <button class="switch is-on" id="obfMinify" data-on="true"><span></span></button>
+              </div>
+              <div class="toggle-inline">
+                <span>Strings</span>
+                <button class="switch is-on" id="obfStrings" data-on="true"><span></span></button>
+              </div>
+            </div>
+
+            <div class="editors">
+              <article class="card">
+                <div class="card-head">
+                  <span class="card-dot in"></span>
+                  <span class="card-title">Input</span>
+                  <span class="card-meta" id="obfInMeta">empty</span>
+                  <div class="grow"></div>
+                  <button class="icon-btn" id="obfCopyIn" title="Copy input"><svg class="i"><use href="#i-copy" /></svg></button>
+                </div>
+                <div class="code">
+                  <div class="gutter" id="obfGutterIn"></div>
+                  <textarea id="obfIn" spellcheck="false" autocomplete="off" placeholder="-- Paste the Lua you want to protect"></textarea>
+                </div>
+              </article>
+
+              <article class="card output" id="obfOutCard">
+                <div class="card-head">
+                  <span class="card-dot out"></span>
+                  <span class="card-title">Output</span>
+                  <span class="card-meta" id="obfOutMeta">—</span>
+                  <div class="grow"></div>
+                  <button class="icon-btn" id="obfCopyOut" title="Copy output"><svg class="i"><use href="#i-copy" /></svg></button>
+                  <button class="icon-btn" id="obfSaveOut" title="Save as .lua"><svg class="i"><use href="#i-download" /></svg></button>
+                </div>
+                <div class="code out">
+                  <div class="gutter" id="obfGutterOut"></div>
+                  <div class="scroller"><pre class="highlight" id="obfOut"><span class="empty-state">Protected source will appear here.</span></pre></div>
+                </div>
+                <div class="progress" id="obfProgress"><span></span></div>
+              </article>
+            </div>
+
+            <footer class="actionbar">
+              <div class="status">
+                <span class="status-pulse" id="obfPulse"></span>
+                <span id="obfStatus">Ready</span>
+                <span class="status-sep">·</span>
+                <span class="status-dim" id="obfDetected">Lua / Luau</span>
+              </div>
+              <div class="grow"></div>
+              <button class="primary" id="obfRun">
+                <svg class="i"><use href="#i-shield" /></svg><span>Obfuscate</span>
+              </button>
+            </footer>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- settings drawer -->
+    <div class="scrim" id="scrim"></div>
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <header class="drawer-head">
+        <div><h2>Settings</h2><p>Engine behaviour and appearance</p></div>
+        <button class="icon-btn" id="drawerClose"><svg class="i"><use href="#i-x" /></svg></button>
+      </header>
+      <div class="drawer-body">
+        <section class="setting">
+          <h3>Appearance</h3>
+          <div class="row">
+            <div class="row-text"><b>Light theme</b><small>Logo stays the same</small></div>
+            <button class="switch" id="setTheme"><span></span></button>
+          </div>
+        </section>
+
+        <section class="setting">
+          <h3>Deobfuscator</h3>
+          <div class="row">
+            <div class="row-text"><b>Decode string tables</b><small>Resolve encrypted constants</small></div>
+            <button class="switch is-on" id="setDecode"><span></span></button>
+          </div>
+          <div class="row">
+            <div class="row-text"><b>Sandbox trace</b><small>Execute in a mocked Roblox env</small></div>
+            <button class="switch is-on" id="setTrace"><span></span></button>
+          </div>
+          <div class="row">
+            <div class="row-text"><b>Strip junk</b><small>Drop dead locals and wrappers</small></div>
+            <button class="switch is-on" id="setJunk"><span></span></button>
+          </div>
+          <div class="row">
+            <div class="row-text"><b>Format output</b><small>Re-indent the recovered code</small></div>
+            <button class="switch is-on" id="setFormat"><span></span></button>
+          </div>
+        </section>
+
+        <section class="setting">
+          <h3>Obfuscator</h3>
+          <div class="row">
+            <div class="row-text"><b>Rename identifiers</b><small>local → l_1, l_2 …</small></div>
+            <button class="switch is-on" id="setRename"><span></span></button>
+          </div>
+          <div class="row">
+            <div class="row-text"><b>Encrypt strings</b><small>Generated decoder, XOR + base</small></div>
+            <button class="switch is-on" id="setEncrypt"><span></span></button>
+          </div>
+          <div class="row">
+            <div class="row-text"><b>Add junk</b><small>Opaque dead code</small></div>
+            <button class="switch" id="setNoise"><span></span></button>
+          </div>
+          <div class="row">
+            <div class="row-text"><b>Seed</b><small>Deterministic builds</small></div>
+            <input class="field" id="setSeed" value="lunar" spellcheck="false" />
+          </div>
+        </section>
+
+        <section class="setting">
+          <h3>About</h3>
+          <div class="about">
+            <div><b>LunarLua</b><span>v1.0.0</span></div>
+            <p>Local Lua/Luau obfuscation toolkit. Nothing leaves this machine.</p>
+            <p class="fine">Obfuscating code you do not own, or bypassing another product's protection, may violate its terms or the law.</p>
+          </div>
+        </section>
+      </div>
+    </aside>
+
+    <div class="toasts" id="toasts"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
