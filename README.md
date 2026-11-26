@@ -1,4 +1,6 @@
 <div align="center">
+  <img src="docs/screenshot.png" alt="LunarLua" width="100%" />
+
   <img src="web/assets/icon.png" width="96" alt="LunarLua" />
   <h1>LunarLua</h1>
   <p><b>Lua / Luau obfuscator &amp; deobfuscator</b> — a compact, glassy Windows desktop app.</p>

@@ -1,3 +1,6 @@
+(function () {
+"use strict";
+
 /* LunarLua — front-end controller */
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -7,9 +10,26 @@ const TAURI = window.__TAURI__ || null;
 const isTauri = !!TAURI;
 const invoke = (cmd, args) => (TAURI ? TAURI.core.invoke(cmd, args) : Promise.reject(new Error("Not running inside Tauri")));
 
+// localStorage can throw on custom protocols - never let it kill the boot
+const store = {
+  get(key, fallback) {
+    try {
+      const v = localStorage.getItem(key);
+      return v == null ? fallback : v;
+    } catch {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch {}
+  },
+};
+
 const state = {
   tab: "deob",
-  theme: localStorage.getItem("ll.theme") || "dark",
+  theme: store.get("ll.theme", "dark"),
   busy: false,
   last: { deob: "", obf: "" },
 };
@@ -18,7 +38,7 @@ const state = {
 function applyTheme(theme, announce) {
   state.theme = theme;
   document.documentElement.dataset.theme = theme;
-  localStorage.setItem("ll.theme", theme);
+  store.set("ll.theme", theme);
   const label = $("#themeLabel");
   const icon = $("#themeIcon use");
   if (label) label.textContent = theme === "dark" ? "Dark" : "Light";
@@ -482,3 +502,7 @@ document.addEventListener("pointermove", (e) => {
   el.style.setProperty("--mx", `${e.clientX - r.left}px`);
   el.style.setProperty("--my", `${e.clientY - r.top}px`);
 });
+
+window.highlightLua = highlightLua;
+window.gutterFor = gutterFor;
+})();
