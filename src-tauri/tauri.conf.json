@@ -17,7 +17,7 @@
     "active": true,
     "targets": ["nsis"],
     "publisher": "LunarLua",
-    "copyright": "MIT",
+    "copyright": "GPL-3.0-or-later",
     "category": "DeveloperTool",
     "shortDescription": "Lua/Luau obfuscator and deobfuscator",
     "longDescription": "LunarLua cleans and obfuscates Lua and Luau source code in a compact, glassy desktop app.",

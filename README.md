@@ -93,7 +93,10 @@ tools/make_icon.py  builds the icon from the logo
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+GPL-3.0 — see [LICENSE](LICENSE).
+
+You may build and redistribute LunarLua, including commercially, as long as the source stays
+available under the same terms. The `LunarLua` name and logo are not covered by the licence.
 
 ## Disclaimer
 
