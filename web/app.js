@@ -521,7 +521,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // let the boot screen breathe for a moment, then hand over
-  setTimeout(finishBoot, 620);
+  // wait until the first frame is actually painted, then hold briefly
+  requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(finishBoot, 700)));
 });
 
 /* Fluent reveal highlight */
